@@ -1,0 +1,31 @@
+SZ:
+
+Inkblot Art Academy
+Sturgeon Shipyard
+The Reef
+Snapper Canal
+Piranha Pit
+
+TC:
+
+Inkblot Art Academy
+The Reef
+Manta Maria
+MakoMart
+Ancho-V Games
+
+RM:
+
+Humpback Pump Track
+Manta Maria
+Snapper Canal
+Blackbelly Skatepark
+Ancho-V Games
+
+CB:
+
+Humpback Pump Track
+Inkblot Art Academy
+The Reef
+Snapper Canal
+Piranha Pit
