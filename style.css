@@ -13,15 +13,6 @@ body {
     background-color: #26005c;
 }
 
-.main-section {
-    font-size: 20px;
-}
-
-.section-title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
 #navbar {
     position: sticky;
     top: 0;
@@ -48,7 +39,43 @@ body {
     text-decoration: none;
     color: white;
     border-bottom: 2px solid black;
-    padding: 1fr 0;
+}
+
+.main-section {
+    font-size: 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#generator {
+    height: 75vh;
+    display: grid;
+    grid-template-rows: 1fr 24fr;
+}
+
+#mode-names {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.mode-name {
+    display: inherit;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+}
+
+#map-names {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.map-name {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 p {
