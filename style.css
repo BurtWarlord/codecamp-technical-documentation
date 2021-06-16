@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');
+
+body {
+    margin: 0;
+}
+
+#main-doc {
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: 1fr 4fr;
+    font-family: 'B612', sans-serif;
+    color: white;
+    background-color: #26005c;
+}
+
+.main-section {
+    font-size: 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+    display: grid;
+    height: 100vh;
+    row-gap: 20px;
+    grid-template-rows: repeat(6, 1fr);
+    background-color: #1a0040;
+}
+
+#Website_Title {
+    display: inherit;
+    font-size: 36px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    align-items: center;
+}
+
+.nav-link {
+    display: inherit;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid black;
+    padding: 1fr 0;
+}
+
+p {
+    font-size: 20px;
+}
+
+li {
+    font-size: 20px;
+}
