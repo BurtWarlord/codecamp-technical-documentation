@@ -68,12 +68,16 @@ body {
 
 .mode-name {
     font-size: 24px;
-    text-align: center;
+    text-align: right;
 }
 
 .mode {
-    font-size: 12px;
+    font-size: 14px;
     justify-self: center;
+}
+
+.map-name {
+    font-size: 12px;
 }
 
 p {
@@ -84,9 +88,83 @@ li {
     font-size: 20px;
 }
 
-.maplist-checkbox:checked:after {
-    background-color: #3f7e0c;
-    content: '\2714';
+.box {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    float: right;
+}
+
+.box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 10px;
+    height: 12px;
+    width: 12px;
+    background: white;
+    justify-self:right;
+}
+
+.box:hover input ~ .checkmark {
+    background-color: rgb(193, 166, 255);
+  }
+
+.box input:checked ~ .checkmark {
+    background-color: #1a0040;
+  }
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+.box input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+.box .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+#buttons {
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#output {
+    margin: auto;
+    text-align: center;
+    max-width: 400px;
+}
+
+#maplist {
+    font-size: 14px;
+    margin: 10px 0 10px 0;
+
 }
 
 /* #sec1 {
