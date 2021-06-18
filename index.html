@@ -2,9 +2,11 @@
 
     <head>
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="CSS/style.css">
 
-        <script src="script.js"></script>
+        <script src="JS/map generator.js"></script>
+
+        <script src="JS/copy.js"></script>
 
     </head>
 
@@ -26,7 +28,7 @@
 
                     <a href="#How_The_HTML_Works" class="nav-link">How The HTML Works</a>
 
-                    <a href="#How_The_Javascript_Works" class="nav-link">How The Javascript Works</a>
+                    <a href="#How_The_Javascript_Works" class="nav-link" id="last-link">How The Javascript Works</a>
 
             </nav>
 
@@ -620,9 +622,9 @@
 
                         <div id="buttons">
 
-                            <button type="submit" onclick="makeMapList()">Generate</button>
+                            <button type="submit" class="button" onclick="makeMapList()">Generate</button>
 
-                            <button type="button" onclick="clearMaps()">Clear</button>
+                            <button type="button" class="button" onclick="clearMaps()">Clear</button>
 
                             <label class="radio" for="sz-only">
                                 <input type="radio" name="options" id="sz-only">
@@ -643,13 +645,17 @@
                                 
                             </label>
 
-                            
-
                         </div>
 
-                        <div id="output">
+                        <div id="post-generation">
 
-                            <p id="maplist"></p>
+                            <div id="output">
+
+                                <p id="maplist"></p>
+
+                            </div>
+
+                            <button type="button" class="button" id="copy" onclick="copyText(maplist)">Copy</button>
 
                         </div>
 
@@ -687,23 +693,23 @@
 
                         <p class="section-title">The Burt Map Pool</p>
 
-                        <p>By using Burt's (Extravagant) Map List Generator (TM) you get EXCLUSIVE access to the
+                        <p class="main-text">By using Burt's (Extravagant) Map List Generator (TM) you get EXCLUSIVE access to the
                             hand picked Burt's Extravaganza 4.0 Maplist.
                         </p>
 
-                        <p>Splat Zones:</p>
+                        <p class="main-text">Splat Zones:</p>
 
                         <img>
 
-                        <p>Tower Control:</p>
+                        <p class="main-text">Tower Control:</p>
 
                         <img>
 
-                        <p>Rainmaker:</p>
+                        <p class="main-text">Rainmaker:</p>
 
                         <img>
 
-                        <p>Clam Blitz:</p>
+                        <p class="main-text">Clam Blitz:</p>
 
                         <img>
                         
