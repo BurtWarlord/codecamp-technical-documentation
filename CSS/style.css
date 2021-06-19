@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    height: 100%;
 }
 
 #main-doc {
@@ -45,12 +46,12 @@ body {
 
 #main-page-grid {
     display: grid;
-    row-gap: 20px;
     grid-template-rows: repeat(auto-fit, 1fr);
 }
 
 .main-section {
     font-size: 20px;
+    background-color: #1f093f;
 }
 
 .section-title {
@@ -151,7 +152,6 @@ li {
   }
 
 #post-generation {
-    margin: auto;
     width: 100%;
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
@@ -260,9 +260,20 @@ li {
     margin-left: 20px;
 }
 
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+code {
+    color: white;
+    font-size: 16px;
+}
+
 @media (max-width: 932px) {
 
     #main-doc {
+        height: 100%;
         grid-template-rows: 1fr 4fr;
         grid-template-columns: 1fr;
         row-gap: 50px;
@@ -291,12 +302,8 @@ li {
         border-right: 2px solid rgb(213, 195, 255);
     }
 
-    #main-page-grid {
-        padding-top: 15vh;
-        margin: auto;
-    }
-
     .main-section {
+        padding-top: 15vh;
         padding-left: 20px;
         padding-right: 20px;
     }

@@ -8,6 +8,12 @@
 
         <script src="JS/copy.js"></script>
 
+        <script src="JS/clear maps.js"></script>
+
+        <script src="JS/sz only.js"></script>
+
+        <script src="JS/burt only.js"></script>
+
     </head>
 
     <body>
@@ -36,13 +42,13 @@
                 
                 <section class="main-section" id="sec1">
 
-                    <header id="#The_Maplist_Generator">
+                    <header id="The_Maplist_Generator">
 
                         <p class="section-title">The Maplist Generator</p>
 
                         <div id="generator">
 
-                                <div class="mode">
+                                <div class="mode" id="zones">
 
                                     <p class="mode-name">Splat Zones</p>
 
@@ -186,7 +192,7 @@
 
                                 </div>
 
-                                <div class="mode">
+                                <div class="mode" id="tower">
 
                                     <p class="mode-name">Tower Control</p>
 
@@ -330,7 +336,7 @@
 
                                 </div>
 
-                                <div class="mode">
+                                <div class="mode" id="rain">
 
                                     <p class="mode-name">Rainmaker</p>
 
@@ -474,7 +480,7 @@
 
                                 </div>
 
-                                <div class="mode">
+                                <div class="mode" id="clam">
 
                                     <p class="mode-name">Clam Blitz</p>
                                     
@@ -622,24 +628,24 @@
 
                         <div id="buttons">
 
-                            <button type="submit" class="button" onclick="makeMapList()">Generate</button>
+                            <button type="button" class="button" onclick="makeMapList()">Generate</button>
 
                             <button type="button" class="button" onclick="clearMaps()">Clear</button>
 
                             <label class="radio" for="sz-only">
-                                <input type="radio" name="options" id="sz-only">
+                                <input type="radio" name="options" id="sz-only" onclick="burtOnly(); szOnly();">
                                 SZ Only
                                 <span class="radio-button"></span>
                             </label>
 
                             <label class="radio" for="burt">
-                                <input type="radio" name="options" id="burt">
+                                <input type="radio" name="options" id="burt" onclick="szOnly(); burtOnly();">
                                 Burt's Extravaganza 4.0 
                                 <span class="radio-button"></span>
                             </label>
 
                             <label class="radio" for="custom">
-                                <input type="radio" name="options" id="custom" checked>
+                                <input type="radio" name="options" id="custom" checked onclick="szOnly(); burtOnly();">
                                 Custom
                                 <span class="radio-button"></span>
                                 
@@ -699,19 +705,19 @@
 
                         <p class="main-text">Splat Zones:</p>
 
-                        <img>
+                        <img src="https://cdn.discordapp.com/attachments/310235775444844555/855527068342026260/sz_maps.png">
 
                         <p class="main-text">Tower Control:</p>
 
-                        <img>
+                        <img src="https://cdn.discordapp.com/attachments/310235775444844555/855527069680533564/tc_maps.png">
 
                         <p class="main-text">Rainmaker:</p>
 
-                        <img>
+                        <img src="https://cdn.discordapp.com/attachments/310235775444844555/855527062807117834/rm_maps.png">
 
                         <p class="main-text">Clam Blitz:</p>
 
-                        <img>
+                        <img src="https://cdn.discordapp.com/attachments/310235775444844555/855527057697931274/cb_maps.png">
                         
                     </header>
 
@@ -721,8 +727,84 @@
 
                     <header id="How_The_HTML_Works">
 
-                        <p class="section-title">How The HTML Works</dipv>
+                        <p class="section-title">How The HTML Works</p>
                         
+                        <p class="main-text">
+
+                            The four modes within the map list generator are all in a grid.
+                            This grid has the following CSS:<br><br>
+
+                            <code>
+
+                                display: grid;<br>
+                                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+                            </code><br><br>
+
+                            which allows the columns stack on top of each other in rows when
+                            the screen size is compressed. Within each column, each map
+                            coresponds to a specific checkbox. Each checkbox is formatted as
+                            follows:<br><br>
+                            
+                            <code>
+
+                                &lt;label class="box" for="humpback-sz"&gt;<br>
+                                &lt;input type="checkbox" name="humpback-sz" id="humpback-sz"&gt;<br>
+                                    Humpback Pump Track<br>
+                                    &lt;span class="checkmark"&gt;&lt;/span&gt;&lt;br&gt;
+                                </label><br>
+
+                            </code><br><br>
+
+                            The "box" and "checkmark" classes allow for the checkbox and
+                            checkmark to be styled in CSS. The id of each checkbox is used
+                            by the Javascript to know which maps are selected by the user.
+                            They are always formatted as the shorthand name of the map
+                            followed by the two letter abreviation of the name separated
+                            by a dash (ie. humpback-sz).
+
+                            The five different buttons are all in a grid in a similar
+                            format to the grid of the map names. The "Generate" button has
+                            the format:<br><br>
+
+                            <code>
+
+                                &lt;button type="button" class="button" onclick="makeMapList()"&gt;Generate&lt;/button&gt;
+
+                            </code><br><br>
+
+                            The buttons are much easier to style than the checkboxes and
+                            radio buttons as they can easily be accessed by the class
+                            "button". The Javascript functions are accessed by the
+                            "onclick" element which calls the specific function when the
+                            user clicks the button. The radio buttons have a similar
+                            format to the checkboxes due to their difficult nature to
+                            style: <br><br>
+
+                            <code>
+
+                                &lt;label class="radio" for="sz-only"&gt;<br>
+                                &lt;input type="radio" name="options" id="sz-only" onclick="burtOnly(); szOnly();"&gt;<br>
+                                    SZ Only<br>
+                                    &lt;span class="radio-button"&gt;&lt;/span&gt;<br>
+                                    &lt;/label&gt;
+
+                            </code><br><br>
+
+                            The classes "radio" and "radio-button" are used to style the
+                            radio buttons. The id is used by the Javascript to access the
+                            state of the button. "onclick" calls multiple Javascript functions
+                            which will be explained in the Javascript section.
+
+                            The area for the map list to be outputted and the "copy" button
+                            are both in a grid with two rows to ensure the copy button is
+                            always beneath the output area. The output area is a "p" element
+                            with the id "maplist" which allows for the Javascript to output
+                            to that specific element. The "copy" buttton is formatted similarily
+                            to the previous two buttons.
+
+                        </p>
+
                     </header>
 
                 </section>
@@ -732,6 +814,307 @@
                     <header id="How_The_Javascript_Works">
 
                         <p class="section-title">How The Javascript Works</p>
+
+                        <p class="main-text">
+
+                            Within the Javascript folder there are 5 main functions, each with
+                            their own file. The functions are makeMapList(), clearMaps(),
+                            szOnly(), burtOnly(), and copyText().<br><br>
+
+                            makeMapList is the most important function as it reads the states
+                            of each of the checkboxes and generates a random map list from the
+                            selected maps. Additionally, the maps will have a random order and
+                            follow this order until there are no more maps in a specific mode.
+                            For example if I have 3 zones maps, 2 tower, 0 rainmaker, and
+                            2 clams, the function will generate a random order for the modes,
+                            say CB > SZ > RM > TC, so the output will look like: <br><br>
+
+                            CB, SZ, TC, CB, SZ, TC, SZ<br><br>
+
+                            As someone who frequently hosts lobbies, I find it valuable to cycle
+                            through all of the maps in a map list before repeating maps previously
+                            played just to keep a specific mode order in place.<br><br>
+
+                            The function starts by defining an array containing strings with all
+                            the different shorthand names for the maps, and array containing strings
+                            with all the official names of the maps, and an array containing the two
+                            letter capitalized abbreviations of the modes. These are used to avoid
+                            using multiple "if else" statements for each different map, instead these
+                            arrays can be referenced to get the desired strings. For example, the
+                            array containing all the shorthand names for the maps looks like this:<br><br>
+
+                            <code>
+
+                                let mapArr = ["humpback", "inkblot", "moray", "mussel", "port", "starfish",
+                                "sturgeon", "reef", "manta", "kelp", "snapper", "blackbelly",
+                                "mako", "walleye", "dorf", "mall", "joe", "pit", "camp",
+                                "wahoo", "hotel", "ancho", "skipper"];
+
+                            </code><br><br>
+
+
+                            Four arrays are then declared for each of the modes and they are set to
+                            the values returned by four different functions, each function being titled
+                            read "Mode" Maps. These arrays will contain all the proper names for the maps
+                            selected by the user, ie SZ Inkblot Art Academy instead of the shorthand
+                            inkblot-sz used in the checkbox id's.<br><br>
+
+                            Within each reading function, a blank array is declared. This is where the
+                            output maps will be pushed to. The function then itterates through each of the
+                            values of the mapArr. A string is then made with the value of mapArr at i,
+                            mapArr[i] added with a dash followed by the lowercase shorthand for the modes.
+                            These created strings directly correlate to the id's of the checkboxes in the
+                            html. A variable is then set to the checkbox object of the specific map-mode
+                            combination. If the checkbox's state is checked, the map is pushed onto the
+                            blank array. This is repeated for all maps for a given mode, resulting in all
+                            the selected maps for a given mode being added to the specific mode array:<br><br>
+
+                            <code>
+
+                                function readZonesMaps(mapArr, finalMapArr) {<br>
+                                    <br>
+                                    let szArr = [];<br>
+                                    <br>
+                                    for (let i = 0; i < mapArr.length; i++) {<br>
+                                        <br>
+                                        let str = mapArr[i] + "-sz";<br>
+                                        let checkbox = document.getElementById(str);<br>
+                                        <br>
+                                        if (checkbox.checked == true) {<br>
+                                            <br>
+                                            szArr.push("SZ " + finalMapArr[i]);<br>
+                                            <br>
+                                        }<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    return szArr;<br>
+                                    <br>
+                                }<br>
+
+                            </code><br>
+
+                            The only difference in the reading functions is that the strings for the modes are
+                            changed to match the mode being read.<br><br>
+
+                            Now that all the selected maps are sorted by mode, the random mode order is generated:
+                            <br>
+
+                            <code>
+                                <br>
+                                function getRandomModeOrder(modeArr) {<br>
+                                    <br>
+                                    let modeOrderArr = [];<br>
+                                    <br>
+                                    do {<br>
+                                        <br>
+                                        let randomModeIndex = Math.floor(getRandomFactor() * modeArr.length);<br>
+                                        modeOrderArr.push(modeArr[randomModeIndex]);<br>
+                                        modeArr.splice(randomModeIndex, 1);<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    while(modeOrderArr.length &lt; 4);<br>
+                                    <br>
+                                    return modeOrderArr;<br>
+                                    <br>
+                                    }<br>
+
+                            </code><br>
+
+                            This code will assign a random number between 0 and 3 to the randomModeIndex variable.
+                            This mode will then be pushed to the modeOrderArr array and spliced out from the
+                            original modeArr array. The end result is an array of length four with the modes in
+                            a random order.<br><br>
+
+                            Now an array will be made with all the selected maps in the random mode order previously
+                            generated:<br><br>
+
+                            <code>
+
+                            function generateMapListArr(szArr, tcArr, rmArr, cbArr, modeOrderArr) {<br>
+                                <br>
+                                let totalMaps = szArr.length + tcArr.length + rmArr.length + cbArr.length;<br>
+                                let finalMapArr = [];<br>
+                                let j = 0;<br>
+                                <br>
+                                for (let i = 0; i &lt; totalMaps; i++) {<br>
+                                    <br>
+                                    let mode = j % 4;<br>
+                                    <br>
+                                    if(modeOrderArr[mode] == "SZ" && szArr.length > 0) {<br>
+                                        <br>
+                                        let randomMapIndex = Math.floor(getRandomFactor() * szArr.length);<br>
+                                        <br>
+                                        finalMapArr.push(szArr[randomMapIndex]);<br>
+                                        szArr.splice(randomMapIndex, 1);<br>
+                                        <br>
+                                        i++;<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    else if(modeOrderArr[mode] == "TC" && tcArr.length > 0) {<br>
+                                        <br>
+                                        let randomMapIndex = Math.floor(getRandomFactor() * tcArr.length);<br>
+                                        <br>
+                                        finalMapArr.push(tcArr[randomMapIndex]);<br>
+                                        tcArr.splice(randomMapIndex, 1);<br>
+                                        <br>
+                                        i++;<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    else if(modeOrderArr[mode] == "RM" && rmArr.length > 0) {<br>
+                                        <br>
+                                        let randomMapIndex = Math.floor(getRandomFactor() * rmArr.length);<br>
+                                        <br>
+                                        finalMapArr.push(rmArr[randomMapIndex]);<br>
+                                        rmArr.splice(randomMapIndex, 1);<br>
+                                        <br>
+                                        i++;<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    else if(modeOrderArr[mode] == "CB" && cbArr.length > 0) {<br>
+                                        <br>
+                                        let randomMapIndex = Math.floor(getRandomFactor() * cbArr.length);<br>
+                                        <br>
+                                        finalMapArr.push(cbArr[randomMapIndex]);<br>
+                                        cbArr.splice(randomMapIndex, 1);<br>
+                                        <br>
+                                        i++;<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    i--;<br>
+                                    j++;<br>
+                                    <br>
+                                }<br>
+                                <br>
+                                return finalMapArr;<br>
+                                <br>
+                            }<br><br>
+
+                            </code>
+
+                            There is a specific if statement for each mode, to deal with the differing strings.
+                            However, these if statments all have the same function. First, the mode is
+                            determined by taking the modulus of the order of the map currently being added
+                            (for example if the map being added is map 17, the mode will be the value at the
+                            index 17 % 4 of the modeOrderArr). Once the mode is determined, the corresponding
+                            if statement is then read. The if statment will only go through if the mode matches
+                            and if there are a non-zero amount of maps in the array of maps for that mode. If both
+                            are true, a map is randomly picked from the maps within the specific mode array. This 
+                            specific map is then pushed onto a final map list array and spliced off the original
+                            array. "i" is incremented again upon leaving the if statments as it is decremented at the
+                            end of the for loop. This is done to ensure that all the maps selected are pushed onto the
+                            final map list array. Say for example we get to map 16, i = 15, and there are no clam maps
+                            in the cbArr. Since cbArr.length is not greater than zero, by the time i exits the for loop
+                            it is still 15, since it is decremented at the end and then incremented by the for loop
+                            itself. This means that the function will go on to fill map 16 with a map from a mode that
+                            has a non-zero amount of maps. "j" is incremented at the end of the code for the same reason.
+                            If there are a non-zero amount of maps for a certain mode, we would want to move to the next
+                            mode instead of infinitely looping at a mode with no maps. So, regardless of if a map is added
+                            to the final array or not, the mode will always follow the order given by modeOrderArr.<br><br>
+
+                            Now the generateMapListStr function is used to generate the string that will be outputted
+                            back to the HTML.<br><br>
+
+                            <code>
+
+                                function generateMapListStr(finalMapListArr) {<br>
+                                    <br>
+                                    let finalMapListStr = "";<br>
+                                    <br>
+                                    for (let i = 0; i &lt; finalMapListArr.length; i++) {<br>
+                                        <br>
+                                        let strToAdd = "";<br>
+                                        let mapNum = i + 1;<br>
+                                        <br>
+                                        if (mapNum == finalMapListArr.length) {<br>
+                                            <br>
+                                            let strToAdd =  mapNum + ") " + finalMapListArr[i];<br>
+                                            finalMapListStr = finalMapListStr.concat(strToAdd);<br>
+                                        }<br>
+                                        <br>
+                                        else {<br>
+                                            <br>
+                                            let strToAdd =  mapNum + ") " + finalMapListArr[i] + "&lt;br&gt;";<br>
+                                            finalMapListStr = finalMapListStr.concat(strToAdd);<br>
+                                            <br>
+                                        }<br>
+                                        <br>
+                                    }<br>
+                                    <br>
+                                    return finalMapListStr;<br>
+                                    <br>
+                                }<br>
+
+                            </code><br>
+
+                            This function takes each element of the finalMapListArr and adds them to a string. If the
+                            specific map is not the final map, the string will have a "&lt;br&gt;" so that in the HTML
+                            each map is separated by a break. The final string is then returned back to the main
+                            function.<br><br>
+
+                            <code>
+
+                                let mapListStr = generateMapListStr(finalMapListArr);<br>
+                                <br>
+                                document.getElementById("maplist").innerHTML = mapListStr;<br>
+
+                            </code><br>
+
+                            The previously mentioned "p" element in the HTML where the map list will be outputted is then
+                            accessed by its id, "maplist", where it is set to the value of our final string.<br><br>
+
+                            The other Javascript used involves the five other buttons, "Clear", "SZ Only", "Burt's
+                            Extravaganza 4.0", "Custom", and "Copy".<br><br>
+
+                            The "Clear" button calls the function clearMaps(). This function will use a similar method
+                            used in the makeMapList() function to itterate through each map-mode combination. The
+                            function will check the state of the checkbox and if it is checked it will set it to be
+                            unchecked.<br><br>
+
+                            The "SZ Only" button calls the function szOnly(). SZ only is a fairly simple function, it
+                            access the column that the modes tower, rainmaker, and clam blitz are located in and sets
+                            their display to "none". In order to make sure that this only happens when the "SZ Only"
+                            radio button is selected, the function checks to make sure that the radio button is checked
+                            and will only change the display to "none" if it is checked. If it is not checked, the
+                            display will be set to "block". This is why "SZ Only" is called for the other radio buttons
+                            as it ensures that the tower, rainmaker, and clam blitz columns are not hidden. Additionally,
+                            the function will also run the code found in the clearMaps() function that affects the tower,
+                            rainmaker, and clam blitz checkboxes to ensure that the map list will only receive inputs from
+                            the visible splat zones column.<br><br>
+
+                            The "Burt's Extravaganza 4.0" button calls the burtOnly() function. This function does a
+                            couple of things. First, it checks to make sure that the respective button is checked. If it
+                            is not, the "disabled" state of each of the checkboxes is set to false. This allows for users to
+                            interact with the checkboxes; when the button is pressed we want the users to not be able to change
+                            the maps as it is a predetermined map list. If the user wants, they are able to hit the "Burt's
+                            Extravaganza 4.0" then hit the "custom" button to change the maps. However, if the "Burt's
+                            Extravaganza 4.0" is checked, the function will itterate through each possible map-mode combination
+                            and only change its state when the specific map is found in the array containing all the "Burt" maps.
+                            This is done with a nested for loop. The first for loop will itterate through all the possible map-mode
+                            combinations while the inner loop will itterate through all the "Burt" maps. If the specific map-mode
+                            combination has the same value as one of the maps in the "Burt" maps array, a count is itterated. Leaving
+                            the inner for loop, if the count is non-zero then the state of the checkbox is changed to "checked" and 
+                            the "disabled" state is set to true. If the count is zero, the "disabled" state is still set to true but
+                            the checkbox "check" state is set to false. This results in all the "Burt" maps being selected in the
+                            checkboxes while all of the checkboxes cannot have their state change while the radio-button is checked.
+                            This function is called for the other two radio buttons to ensure that they do not keep the "disabled" state
+                            as true as this would not allow users to change the maps for other radio button options.<br><br>
+
+                            The "custom" button calls both the szOnly(); function and the burtOnly(); function for previously stated
+                            reasons: this ensures that the user has the most freedom while picking their maps for this option.<br><br>
+
+                            Last is the "copy" button. This button calls the function copyText(). This function copies the text 
+                            with the id "maplist", which is the outputted maplist from the makeMapList() function, to the clipboard.
+                            A small adjustment was made as the method used to copy the text will force the user to highlight the text.
+                            In order to avoid an eyesore, the highlight status of the text with the id "maplist" was given an alpha 
+                            value of 0, so when the user attempts to highlight the text it does not visibly look highlighted.
+                            
+                        </p>
 
                     </header>
 

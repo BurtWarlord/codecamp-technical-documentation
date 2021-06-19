@@ -37,8 +37,6 @@ function makeMapList() {
 
    let mapListStr = generateMapListStr(finalMapListArr);
 
-   //console.log(mapListStr);
-
     document.getElementById("maplist").innerHTML = mapListStr;
 
 
@@ -158,42 +156,17 @@ function generateMapListArr(szArr, tcArr, rmArr, cbArr, modeOrderArr) {
     let finalMapArr = [];
     let j = 0;
 
-    /*
-    szArr = [SZ MakoMart, SZ Snapper Canal];
-    tcArr = [TC Inkblot Art Academy];
-    rmArr = [RM Manta Maria, RM Blackbelly, RM Ancho-V Games];
-    cbArr = [];
-    totalMaps = 6
-    modeOrderArr = [CB, TC, SZ, RM];
-    */
-
     for (let i = 0; i < totalMaps; i++) {
 
         let mode = j % 4;
-
-        /*
-        console.log("Mode " + j + " = " + modeOrderArr[mode]);
-        console.log("Maps left in SZ = " + szArr.length);
-        console.log("Maps left in TC = " + tcArr.length);
-        console.log("Maps left in RM = " + rmArr.length);
-        console.log("Maps left in CB = " + cbArr.length);
-        */
 
         if(modeOrderArr[mode] == "SZ" && szArr.length > 0) {
 
             let randomMapIndex = Math.floor(getRandomFactor() * szArr.length);
 
-            
-            //console.log("Removing map: " + szArr[randomMapIndex]);
-
             finalMapArr.push(szArr[randomMapIndex]);
             szArr.splice(randomMapIndex, 1);
 
-            /*
-            console.log("New SZ Array: ");
-            console.log(szArr);
-            */
-            
             i++;
 
         }
@@ -202,15 +175,8 @@ function generateMapListArr(szArr, tcArr, rmArr, cbArr, modeOrderArr) {
 
             let randomMapIndex = Math.floor(getRandomFactor() * tcArr.length);
 
-            //console.log("Removing map: " + tcArr[randomMapIndex]);
-            
             finalMapArr.push(tcArr[randomMapIndex]);
             tcArr.splice(randomMapIndex, 1);
-            
-            /*
-            console.log("New TC Array: ");
-            console.log(tcArr);
-            */
             
             i++;
 
@@ -220,15 +186,8 @@ function generateMapListArr(szArr, tcArr, rmArr, cbArr, modeOrderArr) {
 
             let randomMapIndex = Math.floor(getRandomFactor() * rmArr.length);
 
-            //console.log("Removing map: " + rmArr[randomMapIndex]);
-
             finalMapArr.push(rmArr[randomMapIndex]);
             rmArr.splice(randomMapIndex, 1);
-
-            /*
-            console.log("New RM Array: ");
-            console.log(rmArr);
-            */
             
             i++;
 
@@ -238,15 +197,8 @@ function generateMapListArr(szArr, tcArr, rmArr, cbArr, modeOrderArr) {
 
             let randomMapIndex = Math.floor(getRandomFactor() * cbArr.length);
 
-            //console.log("Removing map: " + cbArr[randomMapIndex]);
-
             finalMapArr.push(cbArr[randomMapIndex]);
             cbArr.splice(randomMapIndex, 1);
-
-            /*
-            console.log("New CB Array: ");
-            console.log(cbArr);
-            */
             
             i++;
 
